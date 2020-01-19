@@ -6,24 +6,30 @@ under the TODO-List Trello Board.
 """
 import os
 import datetime
-from trello import TrelloClient
+from trello import TrelloClient, exceptions
 
 s_client = TrelloClient(
-    api_key=os.environ['TRELLO_API_KEY'],
-    api_secret=os.environ['TRELLO_API_SECRET'],
+    api_key=os.environ.get("TRELLO_API_KEY", ""),
+    api_secret=os.environ.get("TRELLO_API_SECRET", ""),
 )
 
 o_client = TrelloClient(
-    api_key=os.environ['TRELLO_API_KEY'],
-    api_secret=os.environ['TRELLO_API_SECRET'],
-    token=os.environ['TRELLO_OATH_TOKEN'],
-    token_secret=os.environ['TRELLO_OATH_SECRET']
+    api_key=os.environ.get("TRELLO_API_KEY", ""),
+    api_secret=os.environ.get("TRELLO_API_SECRET", ""),
+    token=os.environ.get("TRELLO_OATH_TOKEN", ""),
+    token_secret=os.environ.get("TRELLO_OATH_SECRET", ""),
 )
 
 
 def get_todo_board():
     """Return trello `TODO List` Board object."""
-    all_boards = s_client.list_boards()
+    try:
+        all_boards = s_client.list_boards()
+    except exceptions.ResourceUnavailable:
+        print(
+            "Could not establish connection. Double check your credentials and Internet connection."
+        )
+        exit(-1)
     todo_board = None
 
     for board in all_boards:
@@ -61,8 +67,7 @@ if __name__ == "__main__":
     my_todo_board = get_todo_board()
     #  print(my_todo_board.id)
     if not my_todo_board:
-        print("`TODO List` board not found. "
-              "Double check name and that it exists.")
+        print("`TODO List` board not found. " "Double check name and that it exists.")
         exit(1)
 
     print("--------------------")
