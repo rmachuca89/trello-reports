@@ -8,6 +8,12 @@ py-trello = "*"
 
 [dev-packages]
 pylint = "*"
+pynvim = "*"
+black = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
