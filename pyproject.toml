@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "trello-reports"
+version = "0.1.0"
+description = "CLI tool to generate reports from trello kanban boards"
+authors = ["Rodrigo Machuca <rmachuca89@hotmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+py-trello = "^0.18.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+yapf = "^0.31.0"
+pytest = "^6.2.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
