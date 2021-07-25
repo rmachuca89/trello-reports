@@ -16,7 +16,7 @@ def lint(session):
     args = session.posargs or locations
     session.install("flake8", "black")
     session.run("flake8", *args)
-    session.run("black", "--check", *args)
+    session.run("black", "--check --diff", *args)
 
 
 @nox.session
