@@ -1,5 +1,7 @@
 # Trello Reports
 
+[![Tests](https://github.com/rmachuca89/trello-reports/workflows/Tests/badge.svg)](https://github.com/rmachuca89/trello-reports/actions?workflow=Tests)
+
 Repository to interact with the [Trello API][trello_api] and generate required
 reports.
 

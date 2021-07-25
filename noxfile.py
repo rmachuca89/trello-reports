@@ -28,5 +28,6 @@ def format(session):
 
 @nox.session
 def typing(session):
+    args = session.posargs or locations
     session.install("mypy")
-    session.run("mypy", ".")
+    session.run("mypy", *args)
