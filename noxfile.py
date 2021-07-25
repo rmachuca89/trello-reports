@@ -1,7 +1,7 @@
 import nox
 
 locations = "trello_reports", "tests", "noxfile.py"
-nox.options.sessions = "lint", "tests", "typing"
+nox.options.sessions = "lint", "typing", "tests"
 
 
 @nox.session(python=["3.9", "3.8", "3.7"])
@@ -20,7 +20,7 @@ def lint(session):
 
 
 @nox.session
-def black(session):
+def format(session):
     args = session.posargs or locations
     session.install("black")
     session.run("black", *args)
