@@ -1,0 +1,56 @@
+name: publish
+on:
+  push:
+    branches:
+      - master
+  release:
+    types: [published]
+jobs:
+  publish-test:
+    name: "Publish package to TestPyPI"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.9'
+        architecture: x64
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+    - name: View distribution version information
+      run: |
+        poetry version patch &&
+        version=$(poetry version | awk '{print $2}') &&
+        poetry version $version.dev.$(date +%s)
+    - name: Build distribution
+      run: poetry build
+    - name: Publish Python distribution to TestPyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.TEST_PYPI_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+
+  publish:
+    if: github.event_name == 'release' && github.event.action == 'published'
+    name: "Publish package to PyPI"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+      - name: View distribution version information
+        run: |
+          poetry version patch &&
+          version=$(poetry version | awk '{print $2}') &&
+          poetry version $version.dev.$(date +%s)
+      - name: Build distribution
+        run: poetry build
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}

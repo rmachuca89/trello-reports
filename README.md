@@ -1,6 +1,6 @@
 # Trello Reports
 
-[![Tests](https://github.com/rmachuca89/trello-reports/workflows/Tests/badge.svg)](https://github.com/rmachuca89/trello-reports/actions?workflow=Tests)
+[![CI](https://github.com/rmachuca89/trello-reports/workflows/ci/badge.svg)](https://github.com/rmachuca89/trello-reports/actions?workflow=ci)
 
 Repository to interact with the [Trello API][trello_api] and generate required
 reports.
@@ -47,6 +47,39 @@ And finally run it manually with:
 
 ```sh
 $ poetry run python weekly-todo-report.py
+```
+
+### QA Tools
+
+Install pre-commit
+
+```sh
+$ poetry run pre-commit install
+```
+
+Run development tools (including lint, typing, and tests):
+
+```sh
+# run at the project root, where the noxfile.py is located:
+$ poetry run nox
+# or just nox if installed globally with pipx for example
+```
+
+Optional: Run individual nox sessions:
+
+```sh
+$ nox -rs <session name>
+```
+
+For example:
+
+```sh
+# manual linting
+$ nox -rs lint
+# manual formatting
+$ nox -rs format
+# manual tests
+$ nox -rs tests
 ```
 
 ## Optional: Environment Auto-Configuration with `direnv`
