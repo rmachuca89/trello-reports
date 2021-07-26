@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "CLI tool to generate reports from trello kanban boards"
 authors = ["Rodrigo Machuca <rmachuca89@hotmail.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/rmachuca89/trello-reports"
+keywords = ["trello"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
