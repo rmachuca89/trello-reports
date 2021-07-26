@@ -22,6 +22,7 @@ mypy = "^0.910"
 black = "^21.7b0"
 pre-commit = "^2.13.0"
 nox = "^2021.6.12"
+codecov = "^2.1.11"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

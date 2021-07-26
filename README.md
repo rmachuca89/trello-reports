@@ -1,6 +1,7 @@
 # Trello Reports
 
 [![CI](https://github.com/rmachuca89/trello-reports/workflows/ci/badge.svg)](https://github.com/rmachuca89/trello-reports/actions?workflow=ci)
+[![Codecov](https://codecov.io/gh/rmachuca89/trello-reports/branch/master/graph/badge.svg)](https://codecov.io/gh/rmachuca89/trello-reports)
 
 Repository to interact with the [Trello API][trello_api] and generate required
 reports.
