@@ -7,9 +7,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.9]
+        python-version: [3.11.4]
         os: [ubuntu-latest, macos-latest, windows-latest]
-        poetry-version: [1.1.7]
+        poetry-version: [1.8.5]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -38,12 +38,15 @@ jobs:
         run: poetry --version
       - name: Set up Nox
         run: |
-          pip install nox
+          pip install nox nox-poetry
       - name: View nox --version
         run: nox --version
       - name: "Run nox targets for ${{ matrix.python-version }}"
         run: |
           nox -p ${{ matrix.python-version }}
+        env:
+          TRELLO_API_KEY: ${{secrets.TRELLO_API_KEY}}
+          TRELLO_API_SECRET: ${{secrets.TRELLO_API_SECRET}}
       - name: "Convert coverage info to XML"
         run: |
           nox --sessions coverage

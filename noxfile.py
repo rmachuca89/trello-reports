@@ -1,13 +1,20 @@
 """Nox sessions."""
+
 import nox
 from nox.sessions import Session
+from nox_poetry import session
 
 
-locations = "trello_reports", "tests", "noxfile.py"
+# Default sessions to run with `nox` command
 nox.options.sessions = "lint", "typing", "tests"
+# Default packages and files to use within sessions
+locations = "trello_reports", "tests", "noxfile.py"
+
+# Adding minor version support because 3.11.11 broke.
+PYTHON_SUPPORTED_VERSIONS = ["3.11.4"]
 
 
-@nox.session(python=["3.9"])
+@session(python=PYTHON_SUPPORTED_VERSIONS)
 def lint(session: Session) -> None:
     """Run project linters."""
     args = session.posargs or locations
@@ -17,7 +24,7 @@ def lint(session: Session) -> None:
     session.run("poetry", "check")
 
 
-@nox.session(python=["3.9"])
+@session(python=PYTHON_SUPPORTED_VERSIONS)
 def typing(session: Session) -> None:
     """Run mypy typing checks."""
     args = session.posargs or locations
@@ -25,7 +32,7 @@ def typing(session: Session) -> None:
     session.run("mypy", *args)
 
 
-@nox.session(python=["3.9"])
+@session(python=PYTHON_SUPPORTED_VERSIONS)
 def tests(session: Session) -> None:
     """Run the test suite."""
     args = session.posargs or ["--cov", "-m", "not e2e"]
@@ -33,7 +40,7 @@ def tests(session: Session) -> None:
     session.run("pytest", *args)
 
 
-@nox.session
+@session
 def format(session: Session) -> None:
     """Format project python files with black."""
     args = session.posargs or locations
@@ -41,7 +48,7 @@ def format(session: Session) -> None:
     session.run("black", *args)
 
 
-@nox.session(python="3.9")
+@session(python=PYTHON_SUPPORTED_VERSIONS)
 def coverage(session: Session) -> None:
     """Upload coverage data to codecov."""
     session.install("coverage[toml]", "codecov")
