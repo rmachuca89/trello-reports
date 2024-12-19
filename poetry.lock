@@ -514,22 +514,6 @@ tox-to-nox = ["jinja2", "tox"]
 uv = ["uv (>=0.1.6)"]
 
 [[package]]
-name = "nox-poetry"
-version = "1.0.3"
-description = "nox-poetry"
-optional = false
-python-versions = ">=3.7,<4.0"
-files = [
-    {file = "nox_poetry-1.0.3-py3-none-any.whl", hash = "sha256:a2fffeb70ae81840479e68287afe1c772bf376f70f1e92f99832a20b3c64d064"},
-    {file = "nox_poetry-1.0.3.tar.gz", hash = "sha256:dc7ecbbd812a333a0c0b558f57e5b37f7c12926cddbcecaf2264957fd373824e"},
-]
-
-[package.dependencies]
-nox = ">=2020.8.22"
-packaging = ">=20.9"
-tomlkit = ">=0.7"
-
-[[package]]
 name = "oauthlib"
 version = "3.2.2"
 description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
@@ -865,17 +849,6 @@ files = [
 ]
 
 [[package]]
-name = "tomlkit"
-version = "0.13.2"
-description = "Style preserving TOML library"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "tomlkit-0.13.2-py3-none-any.whl", hash = "sha256:7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde"},
-    {file = "tomlkit-0.13.2.tar.gz", hash = "sha256:fff5fe59a87295b278abd31bec92c15d9bc4a06885ab12bcea52c71119392e79"},
-]
-
-[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -926,4 +899,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "c69323bed253f1ac265c48c1c9980f2efc544adb8fb0b1df73b9688e5276aa7c"
+content-hash = "0b75f9316f194cd2f8c1aa06e61807fd4ef1f6d404c045c7be7cdcc412977f71"
