@@ -15,7 +15,6 @@ py-trello-api = "0.20.0"
 py-trello = "^0.20.1"
 
 [tool.poetry.group.dev.dependencies]
-nox-poetry = "^1.0.3"
 flake8 = "^7.1.1"
 pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
